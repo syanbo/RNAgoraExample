@@ -38,13 +38,16 @@ export default class RNAgoraExample extends Component {
             channelProfile: 1,
             videoProfile: 40,
             clientRole: 1,
+            swapWidthAndHeight: true
         };
         RtcEngine.init(options);
+
     }
 
     componentDidMount() {
         //加入房间
         RtcEngine.joinChannel();
+        RtcEngine.enableAudioVolumeIndication(500,3);
 
         //所有的原生通知统一管理
         RtcEngine.eventEmitter({
@@ -69,10 +72,14 @@ export default class RNAgoraExample extends Component {
             },
             onJoinChannelSuccess: (data) => {
                 console.log(data);
+                RtcEngine.startPreview();
                 // 加入房间成功!
                 this.setState({
                     isJoinSuccess: true
                 });
+            },
+            onAudioVolumeIndication: (data) => {
+                console.log(data,'-----');
             },
             onUserJoined: (data) => {
                 console.log(data);
@@ -135,6 +142,7 @@ export default class RNAgoraExample extends Component {
                                 <AgoraView
                                     style={styles.remoteView}
                                     key={k}
+                                    zOrderMediaOverlay={true}
                                     remoteUid={v}
                                 />
                             )
@@ -163,6 +171,8 @@ export default class RNAgoraExample extends Component {
                         </View>
                     </View>
                 </View>
+
+
             </View>
         );
     }
@@ -194,7 +204,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     videoView: {
         padding: 5,
