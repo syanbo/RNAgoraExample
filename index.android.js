@@ -7,4 +7,6 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent('RNAgoraExample', () => require('./src').default);
+import App from './src'
+
+AppRegistry.registerComponent('RNAgoraExample', () => App);

@@ -51,13 +51,4 @@ buck-out/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
-.gitignore
-__tests__/
-android/
-app.json
-images/
-index.android.js
-index.ios.js
-ios/
-package.json
-yarn.lock
+
