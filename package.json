@@ -4,18 +4,24 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android",
+    "android-release": "cd android && ./gradlew assembleRelease",
+    "android-release-manual-install": "cd android/app/build/outputs/apk && adb install app-release.apk",
+    "android-debug-manual-install": "cd android/app/build/outputs/apk && adb install app-debug.apk",
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.0.0-alpha.6",
-    "react-native": "0.44.3",
-    "react-native-agora": "^1.0.8"
+    "prop-types": "^15.6.0",
+    "react": "16.0.0",
+    "react-native": "0.51.0",
+    "react-native-agora": "1.1.0"
   },
   "devDependencies": {
-    "babel-jest": "20.0.3",
-    "babel-preset-react-native": "2.0.0",
-    "jest": "20.0.4",
-    "react-test-renderer": "16.0.0-alpha.6"
+    "babel-jest": "22.0.4",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.0.4",
+    "react-test-renderer": "16.0.0"
   },
   "jest": {
     "preset": "react-native"
